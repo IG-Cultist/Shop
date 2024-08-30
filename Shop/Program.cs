@@ -12,18 +12,21 @@ namespace Shop
 
         static void Main(string[] args)
         {
-
-            //商品ID指定変数
+            // 商品ID指定変数
             int itemID = 0;
 
+            // 繰り返し判定変数
             bool loop = true;
+            // 所持金
             int ownGold = 1500;
 
+            // 所持品個数配列
             int[] itemNum = new int[5]
             {
                 0,0,0,0,0
             };
-            //ハンド番号判定ループ
+
+            // ショップ処理
             while (loop == true)
             {
                 Console.Clear();
@@ -39,12 +42,12 @@ namespace Shop
                 Console.WriteLine("5,お食事券:$500[所有数:" + itemNum[4] + "]");
                 Console.WriteLine("==========================================");
                 
-
                 Console.Write("\n[所持金:$" + ownGold + "]商品ID(0で退出):");
                 numStr = Console.ReadLine();
 
+                // 終了処理
                 if (int.TryParse(numStr, out itemID)
-                    && itemID ==0)
+                    && itemID ==0) 
                 {
                     loop = false;
                     Console.WriteLine("退出");
@@ -62,6 +65,7 @@ namespace Shop
                     {
                         ownGold = result;
                         
+                        // アイテム数を加算
                         switch (itemID)
                         {
                             case 1: //いしころ
@@ -83,18 +87,18 @@ namespace Shop
                             default:
                                 break;
                         }
-                        Console.WriteLine("売れたぞ！！！！");
+                        Console.WriteLine("Merchant：売れたぞ！！！！");
                         Console.ReadLine();
                     }
-                    else
+                    else // 金が足りなかった場合、処理しない
                     {
-                        Console.WriteLine("文無しかい？");
+                        Console.WriteLine("Merchant：文無しかい？");
                         Console.ReadLine();
                     }
                 }
-                else
+                else // ID以外を入力した場合、処理しない
                 {
-                    Console.WriteLine("そんなものないよ！");
+                    Console.WriteLine("Merchant：そんなものないよ！");
                     Console.ReadLine();
                 }
 
